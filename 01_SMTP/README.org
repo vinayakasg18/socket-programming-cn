@@ -125,6 +125,15 @@ done before transmitting (except for converting to bytes).  For instance, you wi
 add a \n character if you wish text to include one.
 #+END_QUOTE
 
+*** close
+
+#+BEGIN_QUOTE
+/arguments/ - N/A
+
+/returns/ - N/A
+
+/description/ - Closes the connection to the remote server
+#+END_QUOTE
 
 ** TO SUBMIT
    * Assignment 01 email delivered to =sice-networks-l@list.indiana.edu=
