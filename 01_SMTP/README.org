@@ -100,7 +100,14 @@ body.  The =Netcat= class has the functions described below.
 /returns/ - N/A
 
 /description/ - Starts the connection to the remote server
+
 #+END_QUOTE
+
+/Example/
+#+BEGIN_SRC python
+nc = Netcat()
+nc.connect("myhost.example.com", 8080)
+#+END_SRC
 
 *** read
 
@@ -112,6 +119,11 @@ body.  The =Netcat= class has the functions described below.
 /description/ - Receives bytes from the server.  These bytes can be converted to
 strings with the bytes.decode('utf-8') function if need be.
 #+END_QUOTE
+
+/Example/
+#+BEGIN_SRC python
+raw_data = nc.read(1024) # read next 1024 bytes
+#+END_SRC
 
 *** write
 
@@ -125,6 +137,11 @@ done before transmitting (except for converting to bytes).  For instance, you wi
 add a \n character if you wish text to include one.
 #+END_QUOTE
 
+/Example/
+#+BEGIN_SRC python
+nc.write("I'm writing some text here")
+#+END_SRC
+
 *** close
 
 #+BEGIN_QUOTE
@@ -134,6 +151,11 @@ add a \n character if you wish text to include one.
 
 /description/ - Closes the connection to the remote server
 #+END_QUOTE
+
+/Example/
+#+BEGIN_SRC python
+nc.close()
+#+END_SRC
 
 ** TO SUBMIT
    * Assignment 01 email delivered to =sice-networks-l@list.indiana.edu=
