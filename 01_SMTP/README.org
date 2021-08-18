@@ -1,0 +1,126 @@
+#+TITLE: Exploring the Simple Mail Transfer Protocol
+#+SUBTITLE: Fall 2020
+#+OPTIONS: toc:nil num:nil html-postamble:nil author:nil date:nil
+#+LATEX_HEADER: \usepackage{times}
+#+LATEX_HEADER: \usepackage{listings}
+#+LATEX_HEADER: \lstset{basicstyle=\small\ttfamily,columns=flexible,breaklines=true}
+#+LATEX_HEADER: \usepackage[a4paper,margin=1.0in]{geometry}
+#+LATEX_HEADER: \setlength{\parindent}{0cm}
+#+LATEX_HEADER: \usepackage{parskip}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \setitemize{noitemsep,topsep=2pt,parsep=2pt,partopsep=2pt}
+#+LATEX_HEADER: \usepackage{titling}
+#+LATEX_HEADER: \setlength{\droptitle}{-1in}
+#+LATEX_HEADER: \posttitle{\par\end{center}\vspace{-.5in}}
+
+* Instructions
+
+The Simple Mail Transfer Protocol (SMTP) is used to exchange electronic mail
+(email) messages on the Internet.  A number of organizations run what are known
+as Mail Transfer Agents (MTAs) that implement SMTP and handle the delivery and
+relaying of email.  This assignment will have you become familiar with the
+text-based nature of the protocol by interacting directly with an SMTP server.
+You will then write a simple client program to perform the same functions.
+
+** Task 1 - Interact with an SMTP server
+
+For this task you will connect to the IU mail-relay server using a command line
+tool.
+
+*NOTE*: You will need to connect from a system on the IU network.  Access to the
+IU mail server on port 25 is restricted to certain networks, and your ISP is
+most likely not one of them!  You may use SICE systems like
+=burrow.sice.indiana.edu= and =silo.sice.indiana.edu=.
+
+Once logged onto one of the above IU hosts, you can use /telnet/ to reach the IU
+mail server at =mail-relay.iu.edu= on port 25:
+
+#+begin_src text
+$ telnet mail-relay.iu.edu 25
+Trying 134.68.220.47...
+Connected to mail-relay.iu.edu.
+Escape character is '^]'.
+220 mail-relay.iu.edu ESMTP Sendmail 8.14.4/8.14.4/IU Campus Communications Team; Tue, 14 Aug 2019 10:20:10 -0400
+#+end_src
+
+Use the /Ctrl-]/ escape sequence to quit telnet by typing *quit* at the
+=telnet>= prompt.
+
+Another option on Linux systems is to use the /netcat/ tool (/nc/).
+
+#+begin_src text
+$ nc mail-relay.iu.edu 25
+220 mail-relay.iu.edu ESMTP Sendmail 8.14.4/8.14.4/IU Campus Communications Team; Tue, 14 Aug 2019 10:20:48 -0400
+#+end_src
+
+Use /Ctrl-C/ to end your /nc/ session.
+
+Once connected to the mail server, follow the instructions in your
+textbook or [[http://www.samlogic.net/articles/smtp-commands-reference.htm][online resources]] to send email to yourself using SMTP. Once
+you are comfortable with crafting and sending your own messages,
+submit the following:
+
+1. Send a message while connected to the IU mail server with the following info:
+   * To: =sice-networks-l@list.indiana.edu=
+   * From: <YOUR IU EMAIL>
+   * Subject: "<YOUR NAME> Assignment 01 SMTP"
+
+2. Capture the successful SMTP exchange in your terminal session and submit as a
+   text document.
+
+3. Answer the following questions and submit with part (2) above.
+   * What happens when you try to send to a non-IU email address?  Why?
+   * What happens when you use a made-up from address? Why?
+
+** Task 2 - Write a simple SMTP client
+
+The purpose of this exercise is to familiarize yourself with developing a simple
+client that uses the network, specifically one that talks to the SMTP server you
+used in the first task.
+
+In the =src/= subdirectory you will find a =netcat.py= file.  This file contains
+a =Netcat= (Network Concatenate) class for connecting to, reading, and writing to 
+a remote server.  You will write your own python script that uses the =input=
+function to ask the user for 4 peices of information:
+
+1. A sender email
+2. A receiver email
+3. A subject
+3. A filename that contains the contents of the email.
+
+Your script should then connect to the remote server using a =Netcat= instance and
+submit the email described by the user including the contents of the file as the
+body.  The =Netcat= class has the functions described below.
+
+*** connect
+
+#+BEGIN_QUOTE
+/arguments/ - *host* a url or ip to the server, *port* the integer port number to connect to.
+/returns/ - N/A
+/description/ - Starts the connection to the remote server
+#+END_QUOTE
+
+*** read
+
+#+BEGIN_QUOTE
+/aguments/ - *length* number of bytes to read from the server (default=1024).
+/returns/ - bytearray contents of the message.
+/description/ - Receives bytes from the server.  These bytes can be converted to
+strings with the bytes.decode('utf-8') function if need be.
+#+END_QUOTE
+
+*** write
+
+#+BEGIN_QUOTE
+/arguments/ - *data* string text to send to the server.
+/returns/ - N/A
+/description/ - Sends a string to the server.  This data is sent raw and no processing is
+done before transmitting (except for converting to bytes).  For instance, you will need to
+add a \n character if you wish text to include one.
+#+END_QUOTE
+
+
+** TO SUBMIT
+   * Assignment 01 email delivered to =sice-networks-l@list.indiana.edu=
+   * Screen capture of SMTP session and answers to questions.
+   * SMTP client code following the code submission guidelines.

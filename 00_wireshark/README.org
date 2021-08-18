@@ -1,0 +1,151 @@
+#+TITLE: Packet capture with Wireshark
+#+SUBTITLE: Fall 2020
+#+OPTIONS: toc:nil num:nil html-postamble:nil author:nil date:nil
+#+LATEX_HEADER: \usepackage{times}
+#+LATEX_HEADER: \usepackage{listings}
+#+LATEX_HEADER: \lstset{basicstyle=\small\ttfamily,columns=flexible,breaklines=true}
+#+LATEX_HEADER: \usepackage[a4paper,margin=1.0in]{geometry}
+#+LATEX_HEADER: \setlength{\parindent}{0cm}
+#+LATEX_HEADER: \usepackage{parskip}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \setitemize{noitemsep,topsep=2pt,parsep=2pt,partopsep=2pt}
+#+LATEX_HEADER: \usepackage{titling}
+#+LATEX_HEADER: \setlength{\droptitle}{-1in}
+#+LATEX_HEADER: \posttitle{\par\end{center}\vspace{-.5in}}
+
+* Instructions
+
+As explained in lecture, the protocols we are studying exchange information in
+units called "packets". In this first assignment we will look at an application
+called "Wireshark" which is designed with packet analysis in mind. See the
+[[file:Wireshark_Intro_v7.0.pdf][Wireshark Intro v7.0]] document in the assignemnt directory. This document will
+explain what the Wireshark tool is, how to download it, and how to run it on
+your local machine.
+
+Once wireshark is installed on your machine, perform the following tasks:
+
+** Task 1 - Explore HTTP
+
+#+BEGIN_QUOTE
+/Adopted and Modified based on Wireshark Lab: HTTP v7.0. Supplement to Computer
+Networking: A Top-Down Approach, 7th ed., J.F. Kurose and K.W. Ross./
+#+END_QUOTE
+
+We will be taking a closer look at the basic HTTP GET/Response
+interaction. Let’s begin the exploration of HTTP by downloading a very simple
+HTML file, one that is very short, and contains no embedded objects.
+
+1. Start up your web browser.
+
+2. Start up the Wireshark packet sniffer, as described in the Wireshark
+   Intro. Enter the letters “http” in the field of the display filter. Click the
+   button Apply so that only captured HTTP messages will be displayed in the
+   packet list. (The only interest here is in the HTTP protocol, and you don’t
+   want to see the clutter of all captured packets).
+
+3. Begin Wireshark packet capture.
+
+4. Enter the following to your browser:
+   http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file1.html 
+   
+#+BEGIN_QUOTE
+   *Warning*: /Visiting this page more than once will alter the results you see
+in Wireshark.  If you have to visit the page more than once, use your browsers
+"hard refresh" (Ctrl+F5 on most browsers, Shift+Command+R on mac)/
+#+END_QUOTE
+
+   Your browser should display the very simple, one-line HTML file.
+
+5. Stop Wireshark packet capture.
+
+The window-pane of the packet list will show that two HTTP messages were
+captured: the GET message (from your browser to the /gaia.cs.umass.edu/ web
+server) and the response message from the server to your browser.
+
+The next window-pane of the packet details shows details of the selected message
+(in this case the HTTP GET message, which is highlighted in the packet list).
+
+Recall that since the HTTP message is carried inside a TCP segment, which is
+carried inside an IP datagram, which is carried within an Ethernet frame,
+Wireshark displays the Frame (called packet), Ethernet MAC, IP, and TCP header
+information as well.  It is highly desired to minimize the amount of non-HTTP
+data displayed so make sure that the boxes at the far left of the Frame,
+Ethernet, IP and TCP information have a plus sign or a right-pointing triangle,
+and the HTTP line has a minus sign or a down-pointing triangle (which means that
+all information about the HTTP message is displayed).
+
+Answer the following questions By inspecting and looking at the information in
+the HTTP GET and response messages.
+
+1. What is the IP address of your computer? Of the /gaia.cs.umass.edu/ server? 
+
+2. What is the status code and phrase returned from the server to your browser?
+
+3. What languages does your browser indicate to the server that it can accept?
+   Which header line is used to indicate this information?
+
+4. How many bytes of content (size of file) are returned to your browser? Which
+   header line is used to indicate this information?
+
+5. How long did it take from when the HTTP GET message was sent until the HTTP
+   OK reply was received? (By default, the value of the Time column in the
+   packet listing window is the amount of time, in seconds, since Wireshark
+   tracing began.  To display the Time field in time-of-day format, select the
+   Wireshark View pull down menu, then select Time Display Format, then select
+   Time-of-day.)
+
+** Task 2 - Capture a traceroute
+
+1. Start a new packet capture in Wireshark. (Should be running as root in Linux or Macintosh)
+
+2. Open a "terminal window" on Mac or Linux, a "Command Prompt" on Windows 
+   http://windows.microsoft.com/en-us/windows-vista/open-a-command-prompt-window
+   
+3. Use the "tracert" command on Windows to determine path and intermediate
+   devices between your host and yahoo.com. On Linux or Macintosh, the command
+   is "traceroute". You should see results of the traceroute command in your
+   terminal/command window, as well as in the wireshark packets list. For
+   example:
+ 
+   (Remember, "tracert" for Windows, "traceroute" for Linux & Macintosh!)
+
+   #+begin_src text
+   $ traceroute yahoo.com
+   traceroute to yahoo.com (72.30.35.9), 30 hops max, 60 byte packets
+    1  ae-20.2228.cr5.bldc.net.uits.iu.edu (140.182.204.2)  1.910 ms  1.892 ms  1.882 ms
+    2  ae-15.0.br2.bldc.net.uits.iu.edu (134.68.3.74)  1.846 ms  1.862 ms  1.852 ms
+    3  ae-4.12.rtr.ll.indiana.gigapop.net (149.165.183.13)  5.095 ms  5.089 ms  5.078 ms
+    4  et-1-3-0.1.rtr.ictc.indiana.gigapop.net (149.165.255.193)  5.068 ms  5.059 ms  5.050 ms
+    5  lo-0.1.rtr2.chic.indiana.gigapop.net (149.165.255.6)  9.243 ms  9.237 ms  9.232 ms
+    6  149.165.183.82 (149.165.183.82)  9.218 ms  8.383 ms  8.352 ms
+    7  * * *
+    8  ae-9.pat2.bfz.yahoo.com (216.115.101.199)  21.313 ms  21.323 ms ae-8.pat1.bfz.yahoo.com (216.115.101.231)  21.313 ms
+    9  UNKNOWN-72-30-223-X.yahoo.com (72.30.223.3)  21.304 ms UNKNOWN-74-6-227-X.yahoo.com (74.6.227.143)  30.967 ms et-17-0-0.pat1.bfz.yahoo.com (216.115.101.135)  21.282 ms
+   10  et-1-1-1.msr1.bf1.yahoo.com (74.6.227.135)  49.206 ms et-19-0-0.clr1-a-gdc.bf1.yahoo.com (74.6.122.33)  21.927 ms et-19-1-0.msr2.bf1.yahoo.com (74.6.227.141)  21.916 ms
+   11  eth-18-3-bas1-1-flk.bf1.yahoo.com (98.139.128.73)  30.919 ms et-19-0-0.clr2-a-gdc.bf1.yahoo.com (74.6.122.37)  21.872 ms eth-18-3-bas1-1-flk.bf1.yahoo.com (98.139.128.73)  30.876 ms
+   12  eth-18-3.bas2-1-flk.bf1.yahoo.com (98.139.128.75)  21.813 ms  25.512 ms eth-17-3.bas2-1-flk.bf1.yahoo.com (98.139.128.71)  21.412 ms
+   13  media-router-fp1.prod1.media.vip.bf1.yahoo.com (72.30.35.9)  31.059 ms  31.076 ms  31.070 ms
+   #+end_src
+
+5. Type "icmp" into the "filter" window and then click the "apply" button to
+   narrow down the types of packets shown in the list.
+   
+4. Stop the Wireshark trace. Packets should no longer be collected.
+
+6. Take a screen shot of the wireshark window showing the ICMP
+   packets. Depending on the number of hops between where you are on the
+   Internet and Yahoo, you might not be able to fit all the ICMP packets on the
+   screen. That's OK, just make the Wireshark window as "tall" as you can, and
+   perhaps uncheck the "packet bytes" and "packet details" sections under the
+   "View" menu. Notice the IP addresses match up to the output from the
+   traceroute command in your terminal window.
+   
+   How to take screenshots in [[http://guides.macrumors.com/Taking_Screenshots_in_Mac_OS_X][MacOS]] and [[http://windows.microsoft.com/en-us/windows-xp/help/setup/take-a-screen-shot][Windows]]
+
+7. Copy and paste the contents of the terminal window and the screen shot from
+   step 6 into a document and submit.  Please be sure to type your name and
+   e-mail address at the top of your document submission.
+
+** TO SUBMIT
+   1. Answers to Task 1
+   2. Traceroute output from Wireshark
