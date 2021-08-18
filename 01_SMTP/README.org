@@ -96,7 +96,9 @@ body.  The =Netcat= class has the functions described below.
 
 #+BEGIN_QUOTE
 /arguments/ - *host* a url or ip to the server, *port* the integer port number to connect to.
+
 /returns/ - N/A
+
 /description/ - Starts the connection to the remote server
 #+END_QUOTE
 
@@ -104,7 +106,9 @@ body.  The =Netcat= class has the functions described below.
 
 #+BEGIN_QUOTE
 /aguments/ - *length* number of bytes to read from the server (default=1024).
+
 /returns/ - bytearray contents of the message.
+
 /description/ - Receives bytes from the server.  These bytes can be converted to
 strings with the bytes.decode('utf-8') function if need be.
 #+END_QUOTE
@@ -113,7 +117,9 @@ strings with the bytes.decode('utf-8') function if need be.
 
 #+BEGIN_QUOTE
 /arguments/ - *data* string text to send to the server.
+
 /returns/ - N/A
+
 /description/ - Sends a string to the server.  This data is sent raw and no processing is
 done before transmitting (except for converting to bytes).  For instance, you will need to
 add a \n character if you wish text to include one.
