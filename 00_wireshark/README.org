@@ -18,9 +18,9 @@
 As explained in lecture, the protocols we are studying exchange information in
 units called "packets". In this first assignment we will look at an application
 called "Wireshark" which is designed with packet analysis in mind. See the
-[[file:Wireshark_Intro_v7.0.pdf][Wireshark Intro v7.0]] document in the assignemnt directory. This document will
+[[file:Wireshark_Intro_v7.0.pdf][Wireshark Intro v7.0]] document in the assignment directory. This document will
 explain what the Wireshark tool is, how to download it, and how to run it on
-your local machine.
+your local machine. You do not need to answer the questions contained in that document, only answer the questions of this README file listed below.
 
 Once wireshark is installed on your machine, perform the following tasks:
 
