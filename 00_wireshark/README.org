@@ -128,7 +128,7 @@ the HTTP GET and response messages.
    #+end_src
 
 5. Type "icmp" into the "filter" window and then click the "apply" button to
-   narrow down the types of packets shown in the list.
+   narrow down the types of packets shown in the list. (*Note*: you might have to change the filter depending on the specific implementation of your tracert/traceroute. If you do not see any "icmp" traffic, try filtering for "icmpv6" or look at the overall traffic and try to identify the packets)
    
 4. Stop the Wireshark trace. Packets should no longer be collected.
 
