@@ -157,6 +157,13 @@ nc.write("I'm writing some text here")
 nc.close()
 #+END_SRC
 
+** This requires python3.x
+
+Running it with python2.x will result in the following error:
+#+BEGIN_SRC
+TypeError: getaddrinfo() takes no keyword arguments
+#+END_SRC
+
 ** TO SUBMIT
    * Assignment 01 email delivered to =sice-networks-l@list.indiana.edu=
    * Screen capture of SMTP session and answers to questions.
