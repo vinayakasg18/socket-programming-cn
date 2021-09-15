@@ -38,9 +38,9 @@ Alternatively, you can also consult the manpages on `linux.die.net/man`
 
 Answer the following questions and put them into a file called "answers". You may attach terminal output from dns tools to strengthen your point.
 
-1. How can DNS be used to load balance services? Give a concrete explanation for google.com
+1. *Load balancing* refers to distributing incoming network traffic across multiple compute resources. How can DNS be used to load balance services? Give a concrete explanation for google.com
 
-2. What is the inherent weakness of traditional (as of [RFC1035](https://www.ietf.org/rfc/rfc1035.txt)) DNS? Give an example of how an attacker might utilize it.
+2. DNS has been around since 1985 and the core protocol is still being used today. What is the inherent weakness of DNS (as of [RFC1035](https://www.ietf.org/rfc/rfc1035.txt); excluding [DNSSEC](https://datatracker.ietf.org/doc/html/rfc4033))? Give an example of how an attacker might utilize it.
 
 3. Perform a manual iterative DNS query for mail-relay.iu.edu with dig starting from the root servers. List all commands and their outputs and explain why you issued every command. Do not use tracing features (`dig +trace`) for your final write-down.
 
