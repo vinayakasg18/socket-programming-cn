@@ -144,6 +144,6 @@ single server simultaneously.
 - Submit by uploading your files to the autograder [[https://autograder.sice.indiana.edu/web/course/26][here]].  Make sure
   that you are submitting to the correct section (there is one for
   graduate students and one for undergraduate students).
-- Upload your ~chat.c~ file as well as your ~netster~ file.
+- Upload your ~chat.c~ file as well as your ~netster.c~ file.
 - If your code completes and you are happy with your grade, you are
   done (you may submit as many times as you like).
