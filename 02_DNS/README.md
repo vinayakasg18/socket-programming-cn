@@ -40,11 +40,11 @@ Answer the following questions and put them into a file called "answers". You ma
 
 1. How can DNS be used to load balance services? Give a concrete explanation for google.com
 
-2. What is the inherent weakness of traditional DNS? Give an example of how an attacker might utilize it.
+2. What is the inherent weakness of traditional (as of [RFC1035](https://www.ietf.org/rfc/rfc1035.txt)) DNS? Give an example of how an attacker might utilize it.
 
 3. Perform a manual iterative DNS query for mail-relay.iu.edu with dig starting from the root servers. List all commands and their outputs and explain why you issued every command. Do not use tracing features (`dig +trace`) for your final write-down.
 
-4. You are sitting in a coffee shop and are connected to a public WLAN. You fire up wireshark and start sniffing the traffic of other customers. You notice that all of their traffic is over https so you cannot simply read it. You also notice something else, what is it and what are the implications?
+4. You are sitting in a coffee shop and are connected to a public WLAN. You fire up wireshark and start sniffing the traffic of other customers. You notice that all of their traffic is over https so you cannot simply read it. You also notice something striking about the DNS traffic, what is it and what are the implications?
 
 5. Suppose that IU has an internal DNS cache. You are an ordinary user (no network admin). Can you determine (and if yes, how) if a given external website was recently accessed?
 
