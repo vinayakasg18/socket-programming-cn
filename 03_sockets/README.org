@@ -21,11 +21,11 @@ read from the connected socket.  Now, you will develop both a client
 program, the accompanying server program, and the application protocol
 that will allow both ends to communicate in some meaningful way.
 
-We will be using the /netster/ skeleton code in the [[https://github.iu.edu/SICE-Networks/Net-Fall21/tree/master/src][~src/~]] directory
+We will be using the /netster/ skeleton code in the [[https://github.iu.edu/SICE-Networks/Net-Fall21/tree/master/src][src/]] directory
 found in this repository.  This program provides a framework for
 exploring network programming techniques over this and upcoming
 assignments.  Skeleton /netster/ code for C is found in
-[[https://github.iu.edu/SICE-Networks/Net-Fall21/blob/master/src/netster.c][~src/netster.c~]].  Documentation for /netster/ is located in the wiki
+[[https://github.iu.edu/SICE-Networks/Net-Fall21/blob/master/src/netster.c][src/netster.c]].  Documentation for /netster/ is located in the wiki
 for this repository ([[https://github.iu.edu/SICE-Networks/Net-Fall21/wiki/Netster][here]]).  The skeleton code allows /netster/ to act
 as either the client or the server, depending on the arguments passed
 on the command line.  Run the skeleton code as a first step to become
@@ -58,7 +58,7 @@ determine which task's code is invoked (~-u~, ~--udp~ in this case).
 The /netster/ framework includes a build system to reduce the number
 of new files added for each assignment.  The following instructions
 assume that you are starting in the root directory of your personal
-class git repository and have set up our repository as [[https://github.iu.edu/SICE-Networks/Net-Fall21/wiki/Submission#remote-setup][~upstream~]].
+class git repository and have set up our repository as [[https://github.iu.edu/SICE-Networks/Net-Fall21/wiki/Submission#remote-setup][upstream]].
 
 Begin by fetching the most recent content from our repository.  You can
 now build the first assignment in the ~src~ directory.  Complete your work
