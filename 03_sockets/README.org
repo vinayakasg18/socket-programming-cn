@@ -14,19 +14,19 @@
 #+LATEX_HEADER: \posttitle{\par\end{center}\vspace{-.5in}}
 
 * About this Assignment
-In this assignment you wll develop a client/server application using
+In this assignment you will develop a client/server application using
 the /sockets/ support available in C.  In a previous assignment, you
 connected (using TCP) to an existing server (SMTP mail server) and
 read from the connected socket.  Now, you will develop both a client
 program, the accompanying server program, and the application protocol
 that will allow both ends to communicate in some meaningful way.
 
-We will be using the /netster/ skeleton code in the ~src/~ directory
+We will be using the /netster/ skeleton code in the [[https://github.iu.edu/SICE-Networks/Net-Fall21/tree/master/src][~src/~]] directory
 found in this repository.  This program provides a framework for
 exploring network programming techniques over this and upcoming
 assignments.  Skeleton /netster/ code for C is found in
-~src/netster.c~.  Documentation for /netster/ is located in the wiki
-for this repository ([[https://github.iu.edu/SICE-Networks/Net-Fall21/wiki][here]]).  The skeleton code allows /netster/ to act
+[[https://github.iu.edu/SICE-Networks/Net-Fall21/blob/master/src/netster.c][~src/netster.c~]].  Documentation for /netster/ is located in the wiki
+for this repository ([[https://github.iu.edu/SICE-Networks/Net-Fall21/wiki/Netster][here]]).  The skeleton code allows /netster/ to act
 as either the client or the server, depending on the arguments passed
 on the command line.  Run the skeleton code as a first step to become
 familiar with the structure.
@@ -37,7 +37,7 @@ implementing your solution within the /chat.c/ file.
 Your general task for this assignment will be to write code for a
 client/server pair that passes text back and forth as defined in he
 specific tasks.  The client will send commands to the server, which
-will responde based on the command sent.  You will be implementing
+will respond based on the command sent.  You will be implementing
 your very own "protocol" for communicating between server and client.
 
 When you run /netster/ as a server, it should accept and respond to
@@ -56,21 +56,22 @@ determine which task's code is invoked (~-u~, ~--udp~ in this case).
 * Setup
 
 The /netster/ framework includes a build system to reduce the number
-of new files added for each assignmnt.  The following instructions
+of new files added for each assignment.  The following instructions
 assume that you are starting in the root directory of your personal
-class git repository.
+class git repository and have set up our repository as [[https://github.iu.edu/SICE-Networks/Net-Fall21/wiki/Submission#remote-setup][~upstream~]].
 
 Begin by fetching the most recent content from our repository.  You can
 now build the first assignment in the ~src~ directory.  Complete your work
 within he repository's ~src~ directory.
 
 #+BEGIN_SRC bash
-$ git fetch
+$ git fetch upstream
+$ git merge upstream/master master
 $ cd src
 $ make part1
 #+END_SRC
 
-In order to build your code, run ~make~ in the ~src~ dirctory. You may
+In order to build your code, run ~make~ in the ~src~ directory. You may
 also clean your directory automatically with ~make clean~.
 
 * Instructions
