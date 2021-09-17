@@ -4,7 +4,7 @@
 
 The Domain Name System (DNS) is used to translate human readable domain names to numerical IP addresses. This assignment will have you become familiar with the concept of DNS and give you some hands-on experience manually resolving DNS queries and interpreting their responses.
 
-You will need to use either of the following DNS tools:
+You will need to use either of the following DNS tools, we recomend `host`, `nslookup`, and `dig`:
 
 * `host`, `nslookup`, `dig` (bind package)
 * `drill` (ldns package)
