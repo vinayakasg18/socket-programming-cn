@@ -1,5 +1,5 @@
 CC           = gcc
-CFLAGS       = -O2 -Wall -Werror -pedantic -std=gnu99
+CFLAGS       = -O2 -Wall -Werror -pedantic -std=gnu99 -pthread
 #CFLAGS       = -O0 -g
 
 #set the following variables for custom libraries and/or other objects
