@@ -15,11 +15,11 @@ SRC         = $(wildcard ./*.c)
 OBJS        = $(patsubst ./%.c,$(OBJ)/%.o,$(SRC))
 
 $(PROGRAM): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $(OBJS)
+	$(CC) $(CFLAGS) $(LIBS) -o $@ $(OBJS)
 
 $(OBJ)/%.o: %.c netster.h
 	@mkdir -p $(OBJ)
-	$(CC) $(CFLAGS) $(LIBS) -c -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 .PHONY: part1
 part1:
