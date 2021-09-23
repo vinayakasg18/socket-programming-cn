@@ -1,5 +1,5 @@
 CC           = gcc
-CFLAGS       = -O2 -Wall -Werror -pedantic -std=gnu99
+CFLAGS       = -O2 -Wall -Werror -pedantic -std=gnu99 -pthread
 #CFLAGS       = -O0 -g
 
 #set the following variables for custom libraries and/or other objects
@@ -15,11 +15,11 @@ SRC         = $(wildcard ./*.c)
 OBJS        = $(patsubst ./%.c,$(OBJ)/%.o,$(SRC))
 
 $(PROGRAM): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $(OBJS)
+	$(CC) $(CFLAGS) $(LIBS) -o $@ $(OBJS)
 
 $(OBJ)/%.o: %.c netster.h
 	@mkdir -p $(OBJ)
-	$(CC) $(CFLAGS) $(LIBS) -c -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 .PHONY: part1
 part1:
