@@ -25,7 +25,7 @@ over TCP and UDP.
 of the contents of the file.
 
 * Output Expectations
-For this assignment, your code is function *if and only if* when sending a
+For this assignment, your code is functioning *if and only if* when sending a
 file between a /netster/ client to a /netster/ server (described below)
 the original file and the new file are the exact same, byte for byte.
 
