@@ -47,8 +47,8 @@ implmentations of the socket construction functions.  The prototypes for
 these functions are listed below.
 
 #+BEGIN_SRC c
-int PROF_build_server_socket(char* iface, long port, int use_udp);
-int PROF_build_client_socket(char* host, long port, int use_udp);
+int PROF_build_server_socket(char* iface, long port, int use_udp, struct addrinfo* addr);
+int PROF_build_client_socket(char* host, long port, int use_udp, struct addrinfo* addr);
 #+END_SRC
 
 The ~PROF_*~ functions return a fully constructed socket ready to have
