@@ -103,7 +103,7 @@ to the =file_client= and =file_server= functions, read and send the file
 on the client side, and recieve and write the file on the server side.
 
   * This should function correctly for both TCP and UDP
-  * You must use a 256 byte internal buffer for sending and recieving
+  * You must use a 256 byte internal buffer for sending and receiving
 
 ** TO SUBMIT
 
