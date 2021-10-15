@@ -53,7 +53,8 @@ int PROF_build_client_socket(char* host, long port, int use_udp, struct addrinfo
 
 The ~PROF_*~ functions return a fully constructed socket ready to have
 messages sent and/or recieved. (On the server side, you will still
-need to ~accept~ incoming TCP connections).
+need to ~accept~ incoming TCP connections).  Address information will be written
+to the ~addr~ argument.
 
 If you use these functions, *you will be assessed a 5% penalty* and
 we will not be accepting code using these functions in future assignments,
