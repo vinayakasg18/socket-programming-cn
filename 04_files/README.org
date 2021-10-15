@@ -17,7 +17,7 @@
 In this assignment you will continue your implementation of the /netster/
 application.  In the previous assignment, you implemented a TCP and UDP
 socket and a simple protocol to use the sockets.  Now you will extend
-that code to use /netster/ to transfer files from a server to a client
+that code to use /netster/ to transfer files from a client to a server
 over TCP and UDP.
 
 /You should not assume that the file is text.  It may be any content with/
