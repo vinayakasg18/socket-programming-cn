@@ -107,7 +107,7 @@ on the client side, and recieve and write the file on the server side.
 
 ** TO SUBMIT
 
-- Submit by uploading your files to the autograder [[https://autograder.sice.indiana.edu/web/course/26][here]].  Make sure
+- Submit by uploading your files to the autograder [[https://autograder.sice.indiana.edu/web/project/338][here]].  Make sure
   that you are submitting to the correct assignment.
 - Upload your ~file.c~ file.
 - If your code completes and you are happy with your grade, you are
