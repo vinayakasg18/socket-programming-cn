@@ -16,7 +16,7 @@ SRC         = $(wildcard ./*.c)
 OBJS        = $(patsubst ./%.c,$(OBJ)/%.o,$(SRC))
 
 $(PROGRAM): $(OBJS)
-	$(CC) $(CFLAGS) $(LIBS) -o $@ $(OBJS) $(ARCHIVE) || $(CC) $(CFLAGS) $(LIBS) -o $@ $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $(OBJS) $(ARCHIVE) $(LIBS) || $(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBS)
 
 $(OBJ)/%.o: %.c netster.h
 	@mkdir -p $(OBJ)
