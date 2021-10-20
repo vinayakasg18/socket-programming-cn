@@ -6,7 +6,8 @@ CFLAGS       = -O2 -Wall -Werror -pedantic -std=gnu99 -pthread
 EXTOBJS      =
 LIBS         = -lm -lpthread
 LIBPATHS     = 
-INCLUDEPATHS = 
+INCLUDEPATHS =
+ARCHIVE      = sock.a
 
 OBJ         = ./.build
 
@@ -15,7 +16,7 @@ SRC         = $(wildcard ./*.c)
 OBJS        = $(patsubst ./%.c,$(OBJ)/%.o,$(SRC))
 
 $(PROGRAM): $(OBJS)
-	$(CC) $(CFLAGS) $(LIBS) -o $@ $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $(OBJS) $(ARCHIVE) $(LIBS) || $(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBS)
 
 $(OBJ)/%.o: %.c netster.h
 	@mkdir -p $(OBJ)
@@ -40,6 +41,10 @@ part3:
 part4:
 	cp -n .templates/gobackn.* .
 	cp .templates/part4.h netster.h
+
+.PHONY: archive
+archive: sock.c
+	$(CC) -c $(CFLAGS) $(LIBS) sock.c -o sock.a 
 
 .PHONY: clean
 clean:

@@ -1,0 +1,114 @@
+#+TITLE: Applying Sockets!
+#+SUBTITLE: Fall 2020
+#+OPTIONS: toc:nil num:nil html-postamble:nil author:nil date:nil
+#+LATEX_HEADER: \usepackage{times}
+#+LATEX_HEADER: \usepackage{listings}
+#+LATEX_HEADER: \lstset{basicstyle=\small\ttfamily,columns=flexible,breaklines=true}
+#+LATEX_HEADER: \usepackage[a4paper,margin=1.0in]{geometry}
+#+LATEX_HEADER: \setlength{\parindent}{0cm}
+#+LATEX_HEADER: \usepackage{parskip}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \setitemize{noitemsep,topsep=2pt,parsep=2pt,partopsep=2pt}
+#+LATEX_HEADER: \usepackage{titling}
+#+LATEX_HEADER: \setlength{\droptitle}{-1in}
+#+LATEX_HEADER: \posttitle{\par\end{center}\vspace{-.5in}}
+
+* About this Assignment
+In this assignment you will continue your implementation of the /netster/
+application.  In the previous assignment, you implemented a TCP and UDP
+socket and a simple protocol to use the sockets.  Now you will extend
+that code to use /netster/ to transfer files from a client to a server
+over TCP and UDP.
+
+/You should not assume that the file is text.  It may be any content with/
+/any encoding./  Your implementation should function correctly regardless
+of the contents of the file.
+
+* Output Expectations
+For this assignment, your code is functioning *if and only if* when sending a
+file between a /netster/ client to a /netster/ server (described below)
+the original file and the new file are the exact same, byte for byte.
+
+#+BEGIN_SRC bash
+$ diff file1 file2
+#+END_SRC
+
+The above command should return NO output.  This indicates there are no
+differences between the files.
+
+In addition, your implementation is only correct if, when given the =-u=
+flag, the file is transferred with UDP, but is transferred with TCP if
+called without.  The server and client must both use the same combination
+of =-f= and =-u= (Our tests will only use safe combinations of these flags).
+
+* PROF_* functions
+For this assignment, we will be including a library file containing our 
+implmentations of the socket construction functions.  The prototypes for
+these functions are listed below.
+
+#+BEGIN_SRC c
+int PROF_build_server_socket(char* iface, long port, int use_udp, struct addrinfo* addr);
+int PROF_build_client_socket(char* host, long port, int use_udp, struct addrinfo* addr);
+#+END_SRC
+
+The ~PROF_*~ functions return a fully constructed socket ready to have
+messages sent and/or recieved. (On the server side, you will still
+need to ~accept~ incoming TCP connections).  Address information will be written
+to the ~addr~ argument.
+
+If you use these functions, *you will be assessed a 5% penalty* and
+we will not be accepting code using these functions in future assignments,
+these are not meant as a replacement for your own implementations
+for socket setup.
+
+To use these functions, uncomment the prototypes from the ~file.h~
+header file.
+
+#+BEGIN_EXAMPLE
+Please note that these helper functions were compiled for an x86_64 instruction
+set.  That mean they will not work on certain systems, we recommend working
+on silo if you intend to use them.
+#+END_EXAMPLE
+
+* Setup
+
+#+BEGIN_EXAMPLE
+This section is largely the same between parts, but take note of the
+make command differences!
+#+END_EXAMPLE
+
+The /netster/ framework includes a build system to reduce the number
+of new files added for each assignment.  The following instructions
+assume that you are starting in the root directory of your personal
+class git repository and have set up our repository as [[https://github.iu.edu/SICE-Networks/Net-Fall21/wiki/Submission#remote-setup][upstream]].
+
+Begin by fetching the most recent content from our repository.  You can
+now build the first assignment in the ~src~ directory.  Complete your work
+within he repository's ~src~ directory.
+
+#+BEGIN_SRC bash
+$ git fetch upstream
+$ git merge upstream/master master
+$ cd src
+$ make part2
+#+END_SRC
+
+In order to build your code, run ~make~ in the ~src~ directory. You may
+also clean your directory automatically with ~make clean~.
+
+* Instructions
+
+For this assignment, there is only one task: take the file descriptor passed
+to the =file_client= and =file_server= functions, read and send the file
+on the client side, and recieve and write the file on the server side.
+
+  * This should function correctly for both TCP and UDP
+  * You must use a 256 byte internal buffer for sending and receiving
+
+** TO SUBMIT
+
+- Submit by uploading your files to the autograder [[https://autograder.sice.indiana.edu/web/project/338][here]].  Make sure
+  that you are submitting to the correct assignment.
+- Upload your ~file.c~ file.
+- If your code completes and you are happy with your grade, you are
+  done (you may submit as many times as you like).
