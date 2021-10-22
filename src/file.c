@@ -1,5 +1,5 @@
 // /**************************************************************
-// /* EXAMPLE file.c - Vinayaka Gadag (vgadag)
+// /* file.c - Vinayaka Gadag (vgadag)
 // /* CREATED: 10/22/2021
 // /* Transfer files from a client to a server over TCP and UDP.
 // /*
@@ -32,7 +32,7 @@ void file_server(char *iface, long port, int use_udp, FILE *fp)
     server_addr.sin_port = htons(port);
     char client_buffer[256];
 
-    if (use_udp == 0)
+    if (!use_udp)
     {
         server_socket = socket(AF_INET, SOCK_STREAM, 0);
         size_t file_data;
@@ -127,7 +127,7 @@ void file_client(char *host, long port, int use_udp, FILE *fp)
     addr_list = (struct in_addr **)he->h_addr_list;
     strcpy(host, inet_ntoa(*addr_list[0]));
 
-    if (use_udp == 0)
+    if (!use_udp)
     {
         char server_buffer[256];
         size_t file_data;
