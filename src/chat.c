@@ -1,13 +1,13 @@
-/**************************************************************/
-/* Client/Server application - VINAYAKA GADAG (vgadag)
-/* CREATED: 09/27/2021
-/* 
-/* Fun with sockets
-/*
-/* Reference: https://www.csd.uoc.gr/~hy556/material/tutorials/cs556-3rd-tutorial.pdf
-/* Reference: https://www.binarytides.com/hostname-to-ip-address-c-sockets-linux/
-/* Reference: Multi Threading: https://www.youtube.com/watch?v=qPhP86HIXgg
-/**************************************************************/
+// /**************************************************************/
+// /* Client/Server application - VINAYAKA GADAG (vgadag)
+// /* CREATED: 09/27/2021
+// /*
+// /* Fun with sockets
+// /*
+// /* Reference: https://www.csd.uoc.gr/~hy556/material/tutorials/cs556-3rd-tutorial.pdf
+// /* Reference: https://www.binarytides.com/hostname-to-ip-address-c-sockets-linux/
+// /* Reference: Multi Threading: https://www.youtube.com/watch?v=qPhP86HIXgg
+// /**************************************************************/
 
 #include <stdio.h>
 #include <string.h>
@@ -23,7 +23,7 @@
 #include <pthread.h>
 
 /*
- *  Here is the starting point for your netster part.1 definitions. Add the 
+ *  Here is the starting point for your netster part.1 definitions. Add the
  *  appropriate comment header as defined in the code formatting guidelines
  */
 
@@ -96,7 +96,7 @@ void chat_server(char *iface, long port, int use_udp)
       thd.sock_fd = client_conn_fd;
       thd.tid = &tid1;
 
-      //creating a thread using pthread_create(thread_id, NULL, function_to_execute, <-args_for_the_function)
+      // creating a thread using pthread_create(thread_id, NULL, function_to_execute, <-args_for_the_function)
       pthread_create(&tid1, NULL, chat_messages, (void *)&thd);
 
       // pthread_exit(NULL);
