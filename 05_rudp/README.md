@@ -98,6 +98,34 @@ $ make part3
 In order to build your code, run `make` in the `src` directory. You may
 also clean your directory automatically with `make clean`.
 
+## Testbed
+
+```
++------------------------------+
+|           localhost          |
++------------------------------+
+               | ssh              1) ssh into one of IUs Linux systems
+               V
++------------------------------+
+|   silo, sharks, hulk, tank   |
++------------------------------+
+               | ssh              2) ssh into netdev
+               V
++------------------------------+
+| netdev.open.sice.indiana.edu |
++------------------------------+
+    | ssh                 | ssh   3) ssh into client/server separately
+    V                     V
++--------+            +--------+
+| client |            | server |  4) Run iperf3 between client/server
++--------+            +--------+     baratheon:~$ iperf3 -s
+          \          /               targaryen:~$ iperf3 -c server
+           +--------+
+           | router |
+           +--------+
+```
+
+
 ## Instructions
 
 For this assignment, there is only one task: extend your `file_client` and `file_server` functions to use stop-and-wait to transfer the files.
