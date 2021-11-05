@@ -104,20 +104,15 @@ also clean your directory automatically with `make clean`.
 +------------------------------+
 |           localhost          |
 +------------------------------+
-               | ssh              1) ssh into one of IUs Linux systems
-               V
-+------------------------------+
-|   silo, sharks, hulk, tank   |
-+------------------------------+
-               | ssh              2) ssh into netdev
+               | ssh              1) ssh into netdev
                V
 +------------------------------+
 | netdev.open.sice.indiana.edu |
 +------------------------------+
-    | ssh                 | ssh   3) ssh into client/server separately
+    | ssh                 | ssh   2) ssh into client/server separately
     V                     V
 +--------+            +--------+
-| client |            | server |  4) Run iperf3 between client/server
+| client |            | server |  3) Run iperf3 between client/server
 +--------+            +--------+     baratheon:~$ iperf3 -s
           \          /               targaryen:~$ iperf3 -c server
            +--------+
@@ -128,7 +123,7 @@ also clean your directory automatically with `make clean`.
 
 ## Instructions
 
-For this assignment, there is only one task: extend your `file_client` and `file_server` functions to use stop-and-wait to transfer the files.
+For this assignment, there is only one task: extend your `stopandwait_client` and `stopandwait_server` functions to use stop-and-wait to transfer the files.
 
   * This should function correctly for all 3 port ranges
 
