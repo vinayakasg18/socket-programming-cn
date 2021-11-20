@@ -1,3 +1,12 @@
+// /**************************************************************
+// /* stopandwait.c - Vinayaka Gadag (vgadag)
+// /* CREATED: 11/19/2021
+// /* Stop and wait Implementation
+// /* References:
+// /* https://www.youtube.com/watch?v=LnbvhoxHn8M&ab_channel=NesoAcademy
+// /* https://programmer.group/so_reuseaddr-and-so_reuseport-socket-options-for-tcp-ip-programming.html
+// /**************************************************************
+
 #include <stdio.h>
 #include "stopandwait.h"
 #include <stdio.h>
@@ -8,7 +17,6 @@
 #include <sys/types.h>
 #include <netdb.h>
 #include <arpa/inet.h>
-#include <stdbool.h>
 #include <unistd.h>
 #include <time.h>
 #include <errno.h>
