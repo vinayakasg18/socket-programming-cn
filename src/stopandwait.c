@@ -122,7 +122,8 @@ void stopandwait_server(char *iface, long port, FILE *fp)
                 if (frame_recv.data_len < MAX - 1)
                 {
                     printf("Not enough data\n");
-                    exit(EXIT_FAILURE);
+                    // exit(EXIT_FAILURE);
+                    break;
                 }
 
                 printf("ACK sent\n");
@@ -157,7 +158,7 @@ void stopandwait_client(char *host, long port, FILE *fp)
     int data_received;
     struct timeval tv;
     tv.tv_sec = 0;
-    tv.tv_usec = 300000;
+    tv.tv_usec = 200000;
 
     client_socket = socket(AF_INET, SOCK_DGRAM, 0);
 
